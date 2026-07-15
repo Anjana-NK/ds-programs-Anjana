@@ -4,7 +4,7 @@ using namespace std ;
 template <class T>
 class arrayy
 {
-    T a[5];
+    T a[100];
     int ub,lb;
     public:
     arrayy();
