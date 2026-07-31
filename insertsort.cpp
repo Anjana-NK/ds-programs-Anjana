@@ -3,7 +3,7 @@ using namespace std;
 int main(){
     int arr[100],lb,ub,pos,val;
     cout<<"enter value of lower bound"<<endl;
-    cin>>lb;
+    cin>>lb; 
     cout<<"enter value of upper bound"<<endl;
     cin>>ub;
     cout<<"enter elements"<<endl;
