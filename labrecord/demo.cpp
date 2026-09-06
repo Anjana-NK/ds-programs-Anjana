@@ -1,10 +1,4 @@
 // demo.cpp
-// Menu-driven test driver for the array<T> class.
-//
-// #include "array.cpp" (rather than array.h + separately compiling
-// array.cpp) is intentional here -- see the note at the top of
-// array.cpp for why templates need this when the .h/.cpp split is
-// kept for organization.
 #include "array.cpp"
  
 int main()
@@ -32,7 +26,7 @@ int main()
         switch (choice)
         {
             case 1:
-                // Set up bounds first, then read that many elements.
+                
                 cout << "Enter the lower bound" << endl;
                 cin >> l;
                 arr.setLB(l);
@@ -67,9 +61,6 @@ int main()
                 break;
  
             case 6:
-                // Uses its own local "pos" (shadows the outer one
-                // declared in main) -- harmless here since the outer
-                // pos isn't used elsewhere, but worth being aware of.
                 cout << "enter the position(" << arr.getLB() << "--" << arr.getUB() << ")";
                 cin >> pos;
                 arr.delete_at_position(pos);
@@ -81,7 +72,7 @@ int main()
                 break;
  
             case 8:
-                cout << arr;   // invokes the overloaded operator<<
+                cout << arr;   
                 break;
  
             default:
