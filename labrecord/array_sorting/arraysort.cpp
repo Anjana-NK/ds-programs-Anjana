@@ -113,49 +113,29 @@ void myarray<T>::quicksort()
     {
         int pivot = partition();
 
-        myarray<T> left(lb, pivot - 1);
-        myarray<T> right(pivot + 1, ub);
-
-        // Copy elements into left array
-        for (int i = lb; i < pivot; i++)
-        {
-            left.a[i] = a[i];
-        }
-
-        // Copy elements into right array
-        for (int i = pivot + 1; i <= ub; i++)
-        {
-            right.a[i] = a[i];
-        }
+        // Save original bounds
+        int old_lb = lb;
+        int old_ub = ub;
 
         // Sort left part
-        if (left.lb <= left.ub)
-        {
-            left.quicksort();
-        }
+        lb = old_lb;
+        ub = pivot - 1;
+        if (lb < ub)
+            quicksort();
 
         // Sort right part
-        if (right.lb <= right.ub)
-        {
-            right.quicksort();
-        }
+        lb = pivot + 1;
+        ub = old_ub;
+        if (lb < ub)
+            quicksort();
 
-        // Copy sorted left part back
-        for (int i = lb; i < pivot; i++)
-        {
-            a[i] = left.a[i];
-        }
-
-        // Copy sorted right part back
-        for (int i = pivot + 1; i <= ub; i++)
-        {
-            a[i] = right.a[i];
-        }
+        // Restore original bounds
+        lb = old_lb;
+        ub = old_ub;
     }
 }
 
 // Lomuto Partition
-// Last element is selected as pivot
 template <class T>
 int myarray<T>::partition()
 {
@@ -175,7 +155,6 @@ int myarray<T>::partition()
         }
     }
 
-    // Place pivot in its correct position
     temp = a[i + 1];
     a[i + 1] = a[ub];
     a[ub] = temp;
